@@ -1,13 +1,24 @@
-
 'use client';
 
+// Import Lucide icons for search and user
 import { Search, User } from 'lucide-react';
+import Link from 'next/link'; // Import Link from next/link for internal navigation
 
 export default function Navbar() {
+  // Function to handle smooth scrolling to a section
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault(); // Prevent default jump behavior
+
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       {/* Standard CSS for the Navbar */}
-      <style jsx>{` /* Removed ={true} from jsx prop */
+      <style jsx>{`
         .navbar {
           background-color: #161b22; /* Dark background color */
           color: white; /* White text color */
@@ -29,14 +40,15 @@ export default function Navbar() {
         .navbar-logo {
           display: flex;
           align-items: center;
-          color: white;
+          color: white; /* Ensure logo text color is white */
         }
 
-        .navbar-logo a {
+        .navbar-logo-link { /* Added a specific class for the Link component */
           font-size: 1.5rem; /* text-2xl */
           font-weight: 700; /* font-bold */
           letter-spacing: 0.05em; /* tracking-wider */
-          color: white;
+          color: white; /* Ensure logo link is white */
+          text-decoration: none; /* Remove underline from link */
         }
 
         .navbar-links {
@@ -44,12 +56,13 @@ export default function Navbar() {
           gap: 2rem; /* gap-8 */
           font-size: 1rem; /* text-base */
           font-weight: 500; /* font-medium */
-          color: white;
         }
 
         .navbar-links li a {
           transition: color 0.3s ease; /* transition */
-          color: white;
+          color: white; /* Explicitly set link color to white */
+          text-decoration: none; /* Remove underline from links */
+          cursor: pointer; /* Indicate it's clickable */
         }
 
         .navbar-links li a:hover {
@@ -79,38 +92,31 @@ export default function Navbar() {
 
       <nav className="navbar">
         <div className="navbar-container">
-          {/* Logo Section */}
-          <div className="navbar-logo">
-            {/* Replace with your actual logo component or image */}
-            <a href="/" className="navbar-logo-link">
-              IA TICKET COLOMBIA
-            </a>
-          </div>
 
           {/* Navigation Links - Centered */}
           <ul className="navbar-links">
             <li>
-              <a href="#eventos">
-                    Próximos Eventos
+              <a href="#eventos" onClick={(e) => handleSmoothScroll(e, 'eventos')}>
+                Próximos Eventos
               </a>
             </li>
             <li>
-              <a href="#news">
+              <a href="#news" onClick={(e) => handleSmoothScroll(e, 'news')}>
                 Noticias
               </a>
             </li>
             <li>
-              <a href="#cities">
+              <a href="#cities" onClick={(e) => handleSmoothScroll(e, 'cities')}>
                 Ciudades
               </a>
             </li>
             <li>
-              <a href="#quienes-somos">
+              <a href="#quienes-somos" onClick={(e) => handleSmoothScroll(e, 'quienes-somos')}>
                 Quiénes Somos
               </a>
             </li>
             <li>
-              <a href="#contacto">
+              <a href="#contacto" onClick={(e) => handleSmoothScroll(e, 'contacto')}>
                 Contacto
               </a>
             </li>
