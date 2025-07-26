@@ -1,0 +1,79 @@
+/* src/components/EventCard.module.css */
+
+.card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Para apilar imagen y detalles verticalmente */
+  align-items: center; /* Centrar elementos horizontalmente en la columna */
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white; /* Asegura que el texto dentro de la tarjeta sea blanco */
+  text-align: center; /* Centrar el texto dentro de la tarjeta */
+  width: 100%; /* Asegura que la tarjeta ocupe el ancho disponible del wrapper */
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(31, 111, 235, 0.4);
+}
+
+.image {
+  width: 200px; /* Aumentado para hacer la imagen más grande */
+  height: 200px; /* Aumentado para hacer la imagen más grande */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+  border-radius: 8px;
+}
+
+.details {
+  flex: 1;
+  display: flex; /* Hace que los detalles sean un contenedor flex */
+  flex-direction: column; /* Apila título, meta, descripción verticalmente */
+  justify-content: center; /* Centrar contenido verticalmente */
+  align-items: center; /* Centrar contenido horizontalmente */
+  width: 100%; /* Asegura que los detalles ocupen todo el ancho de la tarjeta */
+}
+
+.title {
+  font-size: 1.65rem; /* Ligeramente más grande para el título */
+  color: #1f6feb;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.meta {
+  font-size: 0.95rem; /* Ligeramente más grande para meta */
+  color: #c9d1d9;
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  line-height: 1.4;
+  margin-bottom: 1rem; /* Added margin-bottom to separate from button */
+}
+
+.buyButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #1f6feb; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: auto; /* Pushes the button to the bottom if details has flex:1 */
+}
+
+.buyButton:hover {
+  background-color: #1a5bbd; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
