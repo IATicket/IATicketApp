@@ -1,6 +1,7 @@
 // src/components/EventCard.tsx
 'use client';
 
+import { useRouter } from 'next/navigation';
 import styles from './EventCard.module.css'; // Importa los estilos del módulo CSS
 import { ShoppingCart } from 'lucide-react'; // Importa el icono de carrito de compra
 
@@ -14,10 +15,10 @@ export interface Event {
 }
 
 export default function EventCard({ event }: { event: Event }) {
-  const handleBuyTickets = () => {
-    // Placeholder for ticket purchase logic
-    alert(`Comprar tickets para: ${event.title}`);
-  };
+  const router = useRouter();
+  function handleBuyTickets() {
+    router.push('/login');
+  }
 
   return (
     <div className={styles.card}>
@@ -26,7 +27,6 @@ export default function EventCard({ event }: { event: Event }) {
         alt={event.title}
         className={styles.image}
         onError={(e) => {
-          // Fallback image if the original image fails to load
           e.currentTarget.src = 'https://placehold.co/200x200/282c34/white?text=No+Image';
         }}
       />
@@ -36,7 +36,6 @@ export default function EventCard({ event }: { event: Event }) {
         <p className={styles.meta}><strong>📍 Lugar:</strong> {event.location}</p>
         <p className={styles.description}>{event.description}</p> {/* Added styles.description class */}
         
-        {/* Botón de Comprar Tickets */}
         <button className={styles.buyButton} onClick={handleBuyTickets}>
           <ShoppingCart size={18} />
           <span>Comprar Tickets</span>

@@ -1,0 +1,31 @@
+.aboutSection {
+    background-color: #0a0a0a;
+    color: white;
+    padding: 5rem 1.5rem;
+    text-align: center;
+  }
+  
+  .aboutContainer {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+  
+  .aboutHeading {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  
+  .aboutParagraph {
+    font-size: 1rem;
+    color: #d1d5db;
+    line-height: 1.625;
+  }
+  
+  @media (max-width: 768px) {
+    .aboutHeading {
+      font-size: 2rem;
+    }
+  }
+  
