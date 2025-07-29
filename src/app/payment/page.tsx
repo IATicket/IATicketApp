@@ -4,9 +4,14 @@ import { useEffect, useState } from 'react';
 import styles from './PaymentPage.module.css';
 import { useRouter } from 'next/navigation';
 
+type Purchase = {
+  tickets: number;
+  locality: 'general' | 'vip';
+};
+
 export default function PaymentPage() {
   const router = useRouter();
-  const [purchase, setPurchase] = useState(null);
+  const [purchase, setPurchase] = useState<Purchase | null>(null);
 
   useEffect(() => {
     const savedPurchase = sessionStorage.getItem('purchase');
