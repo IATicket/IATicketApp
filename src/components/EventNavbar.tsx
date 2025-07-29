@@ -1,4 +1,4 @@
-import { User, ShoppingCart } from 'lucide-react';
+import { User, ShoppingCart, Link } from 'lucide-react';
 import styles from './EventNavbar.module.css';
 
 export default function EventNavbar() {
@@ -6,9 +6,9 @@ export default function EventNavbar() {
     <nav className={styles.navbar}>
       <div className={styles['navbar-container']}>
         <div className={styles['navbar-logo']}>
-          <a href="/" className={styles['navbar-logo-link']}>
-            IA Ticket Colombia
-          </a>
+        <Link href="/">
+        <a className={styles['navbar-logo-link']}>IA Ticket Colombia</a>
+        </Link>
         </div>
         <div className={styles['navbar-icons']}>
           <button className={styles['navbar-icon-button']} aria-label="Cuenta">
