@@ -1,10 +1,50 @@
+.eventSection {
+  background-color: #0a0a0a;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
 
-.list {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
+.eventListContainer {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eventHeading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.eventsHorizontalScroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 2rem;
+  padding-bottom: 1rem;
+
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.eventsHorizontalScroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Child wrapper for EventCard */
+.eventCardWrapper {
+  flex-shrink: 0;
+  width: 24rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .eventCardWrapper {
+    width: 20rem;
   }
-  
+}
