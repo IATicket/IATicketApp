@@ -77,3 +77,51 @@
   background-color: #1a5bbd; /* Darker blue on hover */
   transform: translateY(-2px); /* Slight lift effect */
 }
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .buyButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .buyButton {
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+  }
+}

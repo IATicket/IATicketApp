@@ -17,7 +17,7 @@ export interface Event {
 export default function EventCard({ event }: { event: Event }) {
   const router = useRouter();
   function handleBuyTickets() {
-    router.push('/login');
+    router.push('/event-detail');
   }
 
   return (

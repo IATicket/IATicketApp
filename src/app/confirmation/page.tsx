@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './Confirmation.module.css';
-import EventNavbar from '@/components/EventNavbar';
+import Navbar from '@/components/Navbar';
 
 export default function ConfirmationPage() {
   const [loading, setLoading] = useState(true);
@@ -15,7 +15,7 @@ export default function ConfirmationPage() {
 
   return (
     <>
-      <EventNavbar />
+      <Navbar />
       <main className={styles.container}>
         {loading ? (
           <div className={styles.spinnerContainer}>

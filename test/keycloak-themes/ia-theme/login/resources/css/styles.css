@@ -1,0 +1,125 @@
+/* Estilos generales para centrar el formulario */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #0a0a0a;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+}
+
+.loginContainer {
+    width: 90%;
+    max-width: 450px;
+    background-color: #1f1f1f;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border: 1px solid #333;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.loginHeading {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+/* Estilos para los campos y etiquetas */
+.kcFormGroupClass {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.kcInputClass {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid #444;
+    background-color: #2b2b2b;
+    color: #fff;
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kcInputClass:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.4);
+    outline: none;
+}
+
+/* Estilos para los botones */
+.kcButtonPrimaryClass {
+    width: 100%;
+    background-image: linear-gradient(45deg, #1e90ff, #007bff);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+}
+
+.kcButtonPrimaryClass:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6);
+}
+
+/* Estilos para las líneas divisorias */
+.kcFormSocialAccountSectionClass {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    text-align: center;
+    color: #555;
+}
+
+.kcFormSocialAccountSectionClass hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 1;
+}
+
+.kcFormSocialAccountSectionClass div {
+    background-color: #1f1f1f;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+}
+
+/* Estilos para los enlaces */
+.kcFormGroupClass a {
+    color: #1e90ff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.kcFormGroupClass a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}

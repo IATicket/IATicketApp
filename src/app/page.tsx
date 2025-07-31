@@ -8,6 +8,7 @@ import Contact from '@/components/Contact';
 import NewsFeed from '@/components/NewsFeed';
 import Cities from '@/components/Cities';
 
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[var(--background)]">

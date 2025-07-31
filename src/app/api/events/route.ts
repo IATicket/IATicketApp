@@ -1,33 +1,32 @@
+// app/api/events/route.js (suponiendo que tu ruta está en esta ubicación)
 
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const events = [
-    {
-      id: 1,
-      title: 'Rock en Vivo',
-      date: '2025-08-10',
-      location: 'Medellin , Colombia',
-      description: 'Una noche épica de rock con bandas legendarias.',
-      imageUrl: '/images/rock.png',
-    },
-    {
-      id: 2,
-      title: 'Festival de Jazz',
-      date: '2025-09-15',
-      location: 'Madrid, Cundinamarca',
-      description: 'El mejor jazz en vivo bajo las estrellas.',
-      imageUrl: '/images/jazz.png',
-    },
-    {
-      id: 3,
-      title: 'Pop Party',
-      date: '2025-10-01',
-      location: 'Bogotá, Colombia',
-      description: 'Una fiesta inolvidable con los mejores artistas pop.',
-      imageUrl: '/images/pop.jpg',
-    },
-  ];
+  const QUARKUS_API_URL = 'http://localhost:8080/events';
 
-  return NextResponse.json(events);
+  try {
+    const response = await fetch(QUARKUS_API_URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      return new NextResponse(null, { status: response.status, statusText: response.statusText });
+    }
+
+    const data = await response.json();
+  
+    return NextResponse.json(data, { status: response.status });
+
+  } catch (error) {
+    console.error('Error al conectar con el backend de Quarkus:', error);
+    
+    return NextResponse.json(
+      { message: 'Error interno del servidor al obtener los eventos.' },
+      { status: 500 }
+    );
+  }
 }

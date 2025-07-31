@@ -1,16 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './EventDetail.module.css';
-import EventNavbar from '@/components/EventNavbar';
-// Ajusta la ruta según tu estructura
+import { isAuthenticated } from '../lib/auth';
+import Navbar from '@/components/Navbar';
 
 export default function EventDetailPage() {
   const router = useRouter();
-
   const [tickets, setTickets] = useState(1);
   const [locality, setLocality] = useState('general');
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => {
+      setLoading(false); 
+  }, []);
+
+  if (loading) return null;
 
   const ticketInfo = {
     general: { remaining: 150, price: 50000 },
@@ -24,10 +30,8 @@ export default function EventDetailPage() {
 
   return (
     <>
-      {/* Navbar fijo arriba */}
-      <EventNavbar />
-
-      <main className={styles.container} style={{ marginTop: '90px' }}> 
+      <Navbar />
+      <main className={styles.container} style={{ marginTop: '90px' }}>
         <h1 className={styles.title}>Concierto de Rock Estelar</h1>
 
         <div className={styles.bannerWrapper}>
