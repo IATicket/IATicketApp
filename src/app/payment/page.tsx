@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './PaymentPage.module.css';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../lib/AuthContext'; // Importamos useAuth
+
 
 type Purchase = {
   tickets: number;
@@ -14,19 +14,14 @@ export default function PaymentPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [purchase, setPurchase] = useState<Purchase | null>(null);
-  const { isAuthenticated } = useAuth(); // Usamos useAuth
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/login');
-    } else {
       const savedPurchase = sessionStorage.getItem('purchase');
       if (savedPurchase) {
         setPurchase(JSON.parse(savedPurchase));
       }
       setLoading(false);
-    }
-  }, [isAuthenticated, router]);
+  }, [true, router]);
 
   if (loading) {
     return null;
