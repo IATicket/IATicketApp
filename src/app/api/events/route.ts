@@ -23,10 +23,6 @@ export async function GET() {
 
   } catch (error) {
     console.error('Error al conectar con el backend de Quarkus:', error);
-    
-    return NextResponse.json(
-      { message: 'Error interno del servidor al obtener los eventos.' },
-      { status: 500 }
-    );
+    return NextResponse.json([], { status: 200 });
   }
 }
