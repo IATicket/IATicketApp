@@ -1,0 +1,40 @@
+
+FROM node:20-slim AS build
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install --legacy-peer-deps
+
+
+COPY . .
+
+RUN npm run build
+FROM node:20-slim AS runner
+WORKDIR /app
+
+ARG KEYCLOAK_ISSUER
+ARG KEYCLOAK_CLIENT_ID
+ARG KEYCLOAK_CLIENT_SECRET
+ARG NEXTAUTH_SECRET
+ARG NODE_EXTRA_CA_CERTS
+
+ENV KEYCLOAK_ISSUER=${KEYCLOAK_ISSUER}
+ENV KEYCLOAK_CLIENT_ID=${KEYCLOAK_CLIENT_ID}
+ENV KEYCLOAK_CLIENT_SECRET=${KEYCLOAK_CLIENT_SECRET}
+ENV NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+ENV NODE_EXTRA_CA_CERTS=${NODE_EXTRA_CA_CERTS}
+
+COPY --from=build /app/.next/standalone ./
+
+
+COPY --from=build /app/.next/static ./.next/static
+
+
+COPY --from=build /app/public ./public
+
+COPY --from=build /app/certs ./certs
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
