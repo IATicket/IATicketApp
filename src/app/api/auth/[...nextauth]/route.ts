@@ -1,6 +1,8 @@
 
-import NextAuth from "next-auth";
+
 import KeycloakProvider from "next-auth/providers/keycloak";
+import NextAuth from "next-auth";
+
 
 const handler = NextAuth({
   providers: [
