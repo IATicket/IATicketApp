@@ -142,7 +142,7 @@ export default function NewsFeed() {
         }
 
         .news-card {
-          background-color: #161b22;
+          background-color: #030B15;
           border: 1px solid #30363d;
           border-radius: 12px;
           overflow: hidden;

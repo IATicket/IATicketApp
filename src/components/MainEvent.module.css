@@ -1,0 +1,83 @@
+.mainEventContainer {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 450px; /* Altura predeterminada para desktop */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    color: white;
+    padding: 2rem;
+  }
+  
+  .imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  }
+  
+  .eventContent {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .eventTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .viewEventButton {
+    padding: 0.75rem 2rem;
+    background-color: #1168F3;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .viewEventButton:hover {
+    background-color: #0d54c1;
+  }
+  
+  /* Optimización para móviles */
+  @media (max-width: 767px) {
+    .imageWrapper {
+      height: 300px;
+      padding: 1.5rem;
+      justify-content: flex-end;
+    }
+    
+    .eventContent {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .eventTitle {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+  }
+  

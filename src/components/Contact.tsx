@@ -60,7 +60,7 @@ export default function Contact() {
           display: flex;
           flex-direction: column;
           gap: 1.5rem; /* Espacio entre los campos del formulario */
-          background-color: #161b22; /* Fondo del formulario */
+          background-color: #030B15; /* Fondo del formulario */
           padding: 2.5rem;
           border-radius: 12px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
