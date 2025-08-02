@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Search, User, Menu, X, Home } from 'lucide-react';
 import styles from './EventNavbar.module.css';
 import { useSession, signOut, signIn } from 'next-auth/react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const router = useRouter();
@@ -80,10 +81,10 @@ export default function Navbar() {
       <div className={styles['navbar-container']}>
         {/* Logo o enlace a Home */}
         <div className={styles['navbar-logo']}>
-          <a href="/" aria-label="Página de inicio">
-            <Home size={24} />
-          </a>
-        </div>
+        <Link href="/" aria-label="Página de inicio">
+          <Home size={24} />
+        </Link>
+      </div>
 
         {/* Menu hamburguesa para móvil */}
         <button

@@ -1,97 +1,40 @@
-.container {
-  max-width: 700px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: #121212;
-  color: white;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+/* ================================================= */
+/* ESTILOS DEL CONTENEDOR PRINCIPAL         */
+/* ================================================= */
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Columna de contenido (1fr) y columna de sidebar (320px) */
+  gap: 2rem;
+  max-width: 1200px; /* Ancho máximo del contenedor principal */
+  margin: 90px auto 3rem auto;
+  padding: 0 2rem;
   font-family: sans-serif;
+  color: white;
+}
+
+/* ================================================= */
+/* ESTILOS DE LA COLUMNA DE CONTENIDO       */
+/* ================================================= */
+.contentColumn {
+  padding-right: 1rem;
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .bannerWrapper {
-  position: relative;
   margin-bottom: 2rem;
 }
 
 .banner {
   width: 100%;
-  border-radius: 10px;
-}
-
-.buySection {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background-color: rgba(18, 18, 18, 0.85);
-  padding: 1rem;
-  border-radius: 10px;
-  width: 260px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
-}
-
-@media (max-width: 600px) {
-  .buySection {
-    position: static;
-    width: 100%;
-    margin-top: 1rem;
-  }
-
-  .bannerWrapper {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.compactFields {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.compactField {
-  flex: 1;
-}
-
-.compactField label {
-  display: block;
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.compactField input,
-.compactField select {
-  width: 100%;
-  padding: 0.4rem;
-  border-radius: 4px;
-  border: none;
-}
-
-.buyButton {
-  width: 100%;
-  padding: 0.6rem;
-  background-color: #0070f3;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.buyButton:hover {
-  background-color: #005bb5;
+  border-radius: 12px;
 }
 
 .description {
-  margin-bottom: 1rem;
+  margin: 1.5rem 0;
   line-height: 1.6;
 }
 
@@ -101,12 +44,47 @@
   color: #ccc;
 }
 
-.availabilitySection h2,
-.buySection h2,
+.seatmapSection,
+.mapSection {
+  margin: 3rem 0;
+}
+
 .seatmapSection h2,
 .mapSection h2 {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
+}
+
+.seatmap,
+.mapEmbed iframe {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #333;
+}
+
+
+/* ================================================= */
+/* ESTILOS DEL SIDEBAR               */
+/* ================================================= */
+.sidebar {
+  position: sticky; /* Hace que el sidebar se mantenga visible al hacer scroll */
+  top: 90px; /* Desplazamiento desde la parte superior (para dejar espacio al navbar) */
+  height: fit-content;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.availabilitySection {
+  margin-bottom: 2rem; /* Espacio entre la disponibilidad y el formulario */
+}
+
+.availabilitySection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 1rem;
 }
 
 .locality {
@@ -124,24 +102,76 @@
   height: 40px;
 }
 
-.seatmapSection {
-  margin: 2rem 0;
+
+/* ================================================= */
+/* ESTILOS DE LA SECCIÓN DE COMPRA       */
+/* ================================================= */
+.buySection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 1rem;
 }
 
-.seatmap {
+.fieldGroup {
+  margin-bottom: 1.5rem;
+}
+
+.fieldGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.fieldGroup input,
+.fieldGroup select {
   width: 100%;
-  border-radius: 10px;
-  border: 1px solid #333;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: white;
 }
 
-.mapSection {
-  margin-top: 2rem;
+.priceSummary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
-.mapEmbed iframe {
+.buyButton {
   width: 100%;
-  border-radius: 10px;
+  padding: 0.8rem;
+  background-color: #0070f3;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.container {
-  margin-top: 90px; /* o el valor que prefieras */
+
+.buyButton:hover {
+  background-color: #005bb5;
+}
+
+
+/* ================================================= */
+/* MEDIA QUERIES (ADAPTACIÓN A MÓVILES)     */
+/* ================================================= */
+@media (max-width: 992px) {
+  .mainContainer {
+    grid-template-columns: 1fr; /* Una sola columna para móviles y tablets */
+    padding: 0 1rem;
+  }
+  .sidebar {
+    position: static; /* En pantallas pequeñas el sidebar deja de ser sticky */
+    margin-top: 2rem;
+  }
+  .contentColumn {
+    padding-right: 0;
+  }
 }

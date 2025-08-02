@@ -3,10 +3,18 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const QUARKUS_API_URL = 'http://localhost:8080/events';
+
+  const backendUrl = process.env.BACKEND_URL;
+  if (!backendUrl) {
+    console.error('Error: La variable de entorno BACKEND_URL no está definida.');
+    return NextResponse.json(
+      { error: 'Error interno del servidor: La URL del backend no está configurada.' },
+      { status: 500 }
+    );
+  }
 
   try {
-    const response = await fetch(QUARKUS_API_URL, {
+    const response = await fetch(backendUrl+"/events", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
