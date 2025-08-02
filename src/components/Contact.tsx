@@ -19,12 +19,9 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el formulario, por ejemplo, a una API.
-    // Por ahora, solo lo mostraremos en la consola.
     console.log('Formulario enviado:', formData);
-    // Puedes añadir un mensaje de éxito o limpiar el formulario aquí
-    setFormData({ name: '', email: '', message: '' }); // Limpiar formulario
-    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.'); // Usar un modal en lugar de alert en producción
+    setFormData({ name: '', email: '', message: '' });
+    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
   };
 
   return (

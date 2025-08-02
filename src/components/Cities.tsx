@@ -15,9 +15,7 @@ export default function Ciudades() {
 
   const handleCitySelect = (city: string) => {
     setSelectedCity(city);
-    // Aquí podrías añadir lógica para cargar eventos específicos de la ciudad
-    console.log(`Ciudad seleccionada: ${city}. Aquí se cargarían los eventos para esta ciudad.`);
-    // Por ejemplo, podrías llamar a una función pasada por props o usar un contexto
+    console.log(`Ciudad seleccionada: ${city}`);
   };
 
   return (

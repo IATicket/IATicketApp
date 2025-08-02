@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, User, Menu, X } from 'lucide-react';
+import { Search, User, Menu, X, Home } from 'lucide-react';
 import styles from './EventNavbar.module.css';
 import { useSession, signOut, signIn } from 'next-auth/react';
 
@@ -29,10 +29,23 @@ export default function Navbar() {
     };
   }, [showDropdown]);
 
-  const handleLogout = () => {
-    signOut({ callbackUrl: '/' });
+
+
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    if (session && session.idToken) {
+      const keycloakIssuer = process.env.NEXT_PUBLIC_KEYCLOAK_ISSUER;
+      const callbackUrl = window.location.origin;
+      const logoutUrl = `${keycloakIssuer}/protocol/openid-connect/logout?id_token_hint=${session.idToken}&post_logout_redirect_uri=${callbackUrl}`;
+      router.push(logoutUrl);
+    } else {
+      router.push('/');
+    }
+
     setShowDropdown(false);
   };
+
+// ... el resto de tu componente
 
   const handleProfile = () => {
     setShowDropdown(false);
@@ -65,6 +78,13 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles['navbar-container']}>
+        {/* Logo o enlace a Home */}
+        <div className={styles['navbar-logo']}>
+          <a href="/" aria-label="Página de inicio">
+            <Home size={24} />
+          </a>
+        </div>
+
         {/* Menu hamburguesa para móvil */}
         <button
           className={styles['menu-toggle']}
@@ -104,45 +124,41 @@ export default function Navbar() {
         </ul>
 
         {/* Íconos de la derecha */}
-        <div className={styles['navbar-icons']}>
-          <button className={styles['navbar-icon-button']} aria-label="Buscar">
-            <Search size={20} />
-          </button>
+        <div className={styles['navbar-icons-wrapper']}>
+          <div className={styles['navbar-icons']}>
+            <button className={styles['navbar-icon-button']} aria-label="Buscar">
+              <Search size={20} />
+            </button>
 
-          {session ? (
-            <>
-              {/* Texto Bienvenida separado */}
-              <span className={styles['navbar-welcome']}>
-                Bienvenido: <strong>{session.user?.name || session.user?.email || 'Usuario'}</strong>
-              </span>
-
-              {/* Botón usuario con dropdown */}
-              <div className={styles['user-dropdown']} ref={dropdownRef}>
+            {session ? (
+              <div className={styles['user-dropdown-container']} ref={dropdownRef}>
                 <button
                   className={styles['navbar-icon-button']}
-                  aria-label="Cuenta"
+                  aria-label="Cuenta de usuario"
                   onClick={() => setShowDropdown(!showDropdown)}
                 >
                   <User size={20} />
                 </button>
-
                 {showDropdown && (
                   <div className={styles['dropdown-menu']}>
+                    <p className={styles['dropdown-welcome']}>
+                      Bienvenido, {session.user?.name || 'Usuario'}
+                    </p>
                     <button onClick={handleProfile}>Perfil</button>
                     <button onClick={handleLogout}>Cerrar sesión</button>
                   </div>
                 )}
               </div>
-            </>
-          ) : (
-            <button
-              className={styles['navbar-icon-button']}
-              aria-label="Cuenta"
-              onClick={handleLogin}
-            >
-              <User size={20} />
-            </button>
-          )}
+            ) : (
+              <button
+                className={styles['navbar-icon-button']}
+                aria-label="Iniciar sesión"
+                onClick={handleLogin}
+              >
+                <User size={20} />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </nav>
